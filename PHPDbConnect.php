@@ -1,13 +1,15 @@
 <?php
-$conn = mysqli_connect("localhost","root","","PHP");
-if($conn){
-    echo "connected successfully"."<br>";
-}
-else{
-    die("failed to connect to the database");
-}
+//Get Heroku ClearDB connection information
+$cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+$cleardb_server = $cleardb_url["host"];
+$cleardb_username = $cleardb_url["user"];
+$cleardb_password = $cleardb_url["pass"];
+$cleardb_db = substr($cleardb_url["path"],1);
+$active_group = 'default';
+$query_builder = TRUE;
+// Connect to DB
+$conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 ?>
-
 /* 
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/EmptyPHP.php to edit this template
