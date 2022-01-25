@@ -17,7 +17,7 @@
 			</h1>
 		</p>
         </DIV>
-        <form name="getnoun" method="post" action="getNoun.php">
+        <form name="getnoun" method="post" action="index.php">
     <table>
         <tr>
             <td class="accountFormCol">
@@ -38,7 +38,7 @@
   </html>
 
 <?php
-$con= new mysqli("localhost","root","","PHP");
+include 'PHPDbConnect.php';
 $query ="SELECT Kinyarwanda FROM noun_translation ORDER BY RAND() LIMIT 1";
     $word = filter_input(INPUT_POST, 'var');
    
@@ -53,7 +53,7 @@ $query ="SELECT Kinyarwanda FROM noun_translation ORDER BY RAND() LIMIT 1";
       ?>
 <?php
     if (isset($_POST['ran'])) {
-          $result = mysqli_query($con,$query );
+          $result = mysqli_query($conn,$query );
           ?>
 <TABLE border ="2">
     <tr>
@@ -70,7 +70,7 @@ print"</td></tr>";
 ?>
     <?php
       if (isset($_POST['kin'])&& $word !=null){
-          $result = mysqli_query($con, "SELECT Kinyarwanda FROM noun_translation
+          $result = mysqli_query($conn, "SELECT Kinyarwanda FROM noun_translation
                 WHERE Kinyarwanda LIKE '%{$word}%' OR English LIKE '%{$word}%' OR French LIKE '%{$word}' OR Kiswahili LIKE '%{$word}'");    
 ?>
 <TABLE border ="2">
@@ -95,7 +95,7 @@ print"</td></tr>";
 ?>
     <?php
       if (isset ($_POST['eng']) && $word !=null) {
-          $result = mysqli_query($con, "SELECT English FROM noun_translation
+          $result = mysqli_query($conn, "SELECT English FROM noun_translation
     WHERE Kinyarwanda LIKE '%{$word}%' OR English LIKE '%{$word}%' OR French LIKE '%{$word}' OR Kiswahili LIKE '%{$word}'");
     ?>
     <TABLE border ="2">
@@ -115,7 +115,7 @@ while ($row = mysqli_fetch_array($result))
 ?>
     <?php
 if (isset ($_POST['fren'])&& $word != NULL) {
-    $result = mysqli_query($con, "SELECT French FROM noun_translation
+    $result = mysqli_query($conn, "SELECT French FROM noun_translation
     WHERE Kinyarwanda LIKE '%{$word}%' OR English LIKE '%{$word}%' OR French LIKE '%{$word}' OR Kiswahili LIKE '%{$word}'");
     ?>
     <TABLE border ="2">
@@ -135,7 +135,7 @@ print"</td></tr>";
 ?>
     <?php
 if (isset ($_POST['kisw']) && $word !=NULL) {
-    $result = mysqli_query($con, "SELECT Kiswahili FROM noun_translation
+    $result = mysqli_query($conn, "SELECT Kiswahili FROM noun_translation
     WHERE Kinyarwanda LIKE '%{$word}%' OR English LIKE '%{$word}%' OR French LIKE '%{$word}' OR Kiswahili LIKE '%{$word}'");
 ?>
     <TABLE border ="2">
