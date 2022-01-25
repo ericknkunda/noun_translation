@@ -13,7 +13,7 @@
 		<p>
 			<h1 class="parIndex1">
 				Thank you to use our translation app. Click retrieve button to see a word to search.
-                                Click this <a href="index.php" class="parIndex2"> link </a>to add your own words in the database.	
+                                Click this <a href="word.php" class="parIndex2"> link </a>to add your own words in the database.	
 			</h1>
 		</p>
         </DIV>
