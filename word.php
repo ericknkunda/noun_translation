@@ -8,7 +8,7 @@
         <title></title>
     </head>
     <body>
-        <form name="myform" method="post" action="index.php">
+        <form name="myform" method="post" action="word.php">
             <table>
                     <tr>
                         <td class="accountFormCol">
